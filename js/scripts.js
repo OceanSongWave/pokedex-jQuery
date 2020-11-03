@@ -26,47 +26,60 @@ let pokemonList = [
   },
 ];
 
-// set up for loop on pokemonList
-// add color to different types
-for (let i = 0; i < pokemonList.length; i++) {
-  let color = "";
-  for (let k = 0; k < pokemonList[i].types.length; k++) {
-    if (pokemonList[i].types[k] === "grass") {
-      color = '<span style="color:green;"> ';
-    } else if (pokemonList[i].types[k] === "fire") {
-      color = '<span style="color:red;">';
-    } else if (pokemonList[i].types[k] === "ground") {
-      color = '<span style="color:brown;">';
-    } else if (pokemonList[i].types[k] === "fairy") {
-      color = '<span style="color:lightblue;">';
-    } else if (pokemonList[i].types[k] === "dragon") {
-      color = '<span style="color:orange;">';
-    }
-  }
-
-  let size = "";
-  if (pokemonList[i].height > 6) {
-    size = "Wow, what a big pokemon!";
-  } else if (pokemonList[i].height < 2) {
-    size = "Aww, a little pokemon!";
-  } else {
-    size = "An average size pokemon";
-  }
-
-
- // set up box for each pokemon & its content 
+// set up forEach loop on pokemonList
+pokemonList.forEach(function(pokemon) {
   document.write(
     '<div class = "box">' +
-      pokemonList[i].name +
-      " (height: " +
-      pokemonList[i].height +
-      ")" +
-      size +
-      color +
-      "<br>" +
-      pokemonList[i].types +
-      "<br>" +
-      "</div>"
+    pokemon.name + 
+    " has height of " +
+    pokemon.height +
+    "<br>" + 
+    "Types: " +
+    pokemon.types + 
+    "." +
+    '</div>'
   );
-}
+});
 
+// add color to different types
+// for (let i = 0; i < pokemonList.length; i++) {
+//   let color = "";
+//   for (let k = 0; k < pokemonList[i].types.length; k++) {
+//     if (pokemonList[i].types[k] === "grass") {
+//       color = '<span style="color:green;"> ';
+//     } else if (pokemonList[i].types[k] === "fire") {
+//       color = '<span style="color:red;">';
+//     } else if (pokemonList[i].types[k] === "ground") {
+//       color = '<span style="color:brown;">';
+//     } else if (pokemonList[i].types[k] === "fairy") {
+//       color = '<span style="color:lightblue;">';
+//     } else if (pokemonList[i].types[k] === "dragon") {
+//       color = '<span style="color:orange;">';
+//     }
+//   }
+
+//   let size = "";
+//   if (pokemonList[i].height > 6) {
+//     size = "Wow, what a big pokemon!";
+//   } else if (pokemonList[i].height < 2) {
+//     size = "Aww, a little pokemon!";
+//   } else {
+//     size = "An average size pokemon";
+//   }
+
+
+//   // set up box for each pokemon & its content 
+//   document.write(
+//     '<div class = "box">' +
+//       pokemonList[i].name +
+//       " (height: " +
+//       pokemonList[i].height +
+//       ")" +
+//       size +
+//       color +
+//       "<br>" +
+//       pokemonList[i].types +
+//       "<br>" +
+//       "</div>"
+//   );
+// }
