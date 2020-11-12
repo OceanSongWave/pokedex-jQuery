@@ -96,8 +96,6 @@ let pokemonRepository = (function () {
     // Create img for pokemon in modal content
     let imageElement = document.createElement("img");
     imageElement.src = item.imageUrl;
-    // imageElement.classList.add("modal-img");
-    // imageElement.setAttribute("src", item.imageUrl);
 
     // Apend modal content
     modal.appendChild(closeButtonElement);
