@@ -31,6 +31,7 @@ let pokemonRepository = (function () {
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function(){
       console.log(pokemon);
+      showModal(pokemon);
     });
   }
 
@@ -67,6 +68,69 @@ let pokemonRepository = (function () {
     });
   }
 
+  // showModal function defined here... 
+  function showModal(item){
+    let modalContainer = document.querySelector("#modal-container");
+    // Clear all existing modal content
+    modalContainer.innerHTML = "";
+
+    // Create div element in DOM, add class to div element
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    // Create close button in modal 
+    let closeButtonElement = document.createElement("button");
+    closeButtonElement.classList.add("modal-close");
+    closeButtonElement.innerText = "Close";
+    // Add event listener to close modal when button is clicked
+    closeButtonElement.addEventListener("click", hideModal);
+
+    // Create element for pokemon name in modal content
+    let nameElement = document.createElement("h1");
+    nameElement.innerText = item.name;
+    
+    // Create element for pokemon height in modal content
+    let heightElement = document.createElement("p");
+    heightElement.innerText = item.height;
+
+    // Create img for pokemon in modal content
+    let imageElement = document.createElement("img");
+    imageElement.src = item.imageUrl;
+    // imageElement.classList.add("modal-img");
+    // imageElement.setAttribute("src", item.imageUrl);
+
+    // Apend modal content
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(nameElement);
+    modal.appendChild(heightElement);
+    modal.appendChild(imageElement);
+    modalContainer.appendChild(modal);
+
+    // Add class to show modal
+    modalContainer.classList.add("is-visible");
+
+    // Hide modal when close button is clicked
+    function hideModal() {
+      modalContainer.classList.remove("is-visible");
+    }
+
+    // Hide modal when ESC button is pressed on keyboard
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape"&&
+      modalContainer.classList.contains("is-visible")) {
+        hideModal();
+      }
+    });
+
+    // Hide modal when user clicks outside of modal
+    modalContainer.addEventListener("click", (e) => {
+      let target = e.target;
+      if (target === modalContainer) {
+        hideModal();
+      }
+    });
+  }
+
   return {
     add: add,
     getAll: getAll,
@@ -74,6 +138,8 @@ let pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
+    showModal: showModal,
+  
   };
 })();
 

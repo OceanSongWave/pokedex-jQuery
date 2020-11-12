@@ -7,14 +7,15 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-    <h1>pokedex</h1>
-    <p>List of some Pokemons stats</p>
+    <h1>Pokedex</h1>
+
     <input type="text" id="myInput" onkeyup="search()" placeholder="Search for names.." title="Type in a name">
+
     <ul id='myUL' class='pokemon-list'></ul>
-    <strong>
+    <div id="modal-container">
       <script src="js/promise-polyfill.js"></script>
       <script src="js/fetch-polyfill.js"></script>
       <script src="js/scripts.js"></script>
-    </strong>
+    </div>
   </body>
 </html>
