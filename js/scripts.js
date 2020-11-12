@@ -91,7 +91,7 @@ let pokemonRepository = (function () {
     
     // Create element for pokemon height in modal content
     let heightElement = document.createElement("p");
-    heightElement.innerText = item.height;
+    heightElement.innerText = "height : " + item.height;
 
     // Create img for pokemon in modal content
     let imageElement = document.createElement("img");
