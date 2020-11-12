@@ -68,9 +68,9 @@ let pokemonRepository = (function () {
     });
   }
 
+  let modalContainer = document.querySelector("#modal-container");
   // showModal function defined here... 
   function showModal(item){
-    let modalContainer = document.querySelector("#modal-container");
     // Clear all existing modal content
     modalContainer.innerHTML = "";
 
@@ -106,28 +106,28 @@ let pokemonRepository = (function () {
 
     // Add class to show modal
     modalContainer.classList.add("is-visible");
-
-    // Hide modal when close button is clicked
-    function hideModal() {
-      modalContainer.classList.remove("is-visible");
-    }
-
-    // Hide modal when ESC button is pressed on keyboard
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape"&&
-      modalContainer.classList.contains("is-visible")) {
-        hideModal();
-      }
-    });
-
-    // Hide modal when user clicks outside of modal
-    modalContainer.addEventListener("click", (e) => {
-      let target = e.target;
-      if (target === modalContainer) {
-        hideModal();
-      }
-    });
   }
+
+   // Hide modal when close button is clicked
+   function hideModal() {
+    modalContainer.classList.remove("is-visible");
+  }
+
+  // Hide modal when ESC button is pressed on keyboard
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape"&&
+    modalContainer.classList.contains("is-visible")) {
+      hideModal();
+    }
+  });
+
+  // Hide modal when user clicks outside of modal
+  modalContainer.addEventListener("click", (e) => {
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
 
   return {
     add: add,
@@ -137,7 +137,7 @@ let pokemonRepository = (function () {
     loadDetails: loadDetails,
     showDetails: showDetails,
     showModal: showModal,
-  
+    hideModal: hideModal,
   };
 })();
 
