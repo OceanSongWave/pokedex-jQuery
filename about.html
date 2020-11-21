@@ -17,7 +17,7 @@
         Pokédex
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
       </button>
     
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,30 +38,28 @@
       </div>
     </nav>
 
-    <div 
-    id="myUL" 
-    class="pokemon-list row d-flex justify-content-center flex-wrap"
-    ></div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-          </div>
-        </div>
-      </div>
+    <div class="container page-container">
+        <h3>JavaScript App - Pokédex</h3>
+        <br>
+        <br>
+        <h5>Objective</h5>
+            <p>
+                To build a small web application with HTML, CSS, and JavaScript that loads data from an external API and enables the viewing of data points in detail.
+             </p>
+        <br>
+        <br>
+        <h5>User Goals</h5>
+             <p>
+                 Users should be able to view a list of data and see more details for a given data item on demand.
+             </p>
+        <br>
+        <br>
+        <h5>Key Features</h5>
+             <ul>
+                 <li>Load data from an external sosurce (API)</li>
+                 <li>View a list of items</li>
+                 <li>On user action (e.g., by clicking on a list item), view details for that item</li>
+             </ul>
     </div>
 
     <script
@@ -75,10 +73,10 @@
     <script 
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <!-- <div id="modal-container"> -->
+
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch-polyfill.js"></script>
     <script src="js/scripts.js"></script>
-    <!-- </div> -->
+
   </body>
 </html>
