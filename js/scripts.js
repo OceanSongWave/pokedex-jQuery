@@ -21,7 +21,9 @@ let pokemonRepository = (function () {
       let card = $(
         '<div class="card mt-5" style="width: 18rem; margin:13px;"></div>'
       );
-      let image = $('<img class="card-img-top mx-auto" style="width:30%;" alt="...">');
+      let image = $(
+        '<img class="card-img-top mx-auto" style="width:30%;" alt="...">'
+      );
       let title = $('<h5 class="card-title">' + pokemon.name + "</h5>");
       image.attr("src", pokemon.imageUrlAnimated);
       let body = $('<div class="card-body" style="text-align: center;"></div>');
@@ -43,16 +45,18 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function(){
+    loadDetails(pokemon).then(function () {
       console.log(pokemon);
       showModal(pokemon);
     });
   }
 
   function loadList() {
-    return fetch(apiUrl).then(function (response) {
+    return fetch(apiUrl)
+      .then(function (response) {
         return response.json();
-      }).then(function (json) {
+      })
+      .then(function (json) {
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
@@ -60,37 +64,44 @@ let pokemonRepository = (function () {
           };
           add(pokemon);
         });
-      }).catch(function (e) {
+      })
+      .catch(function (e) {
         console.error(e);
       });
   }
 
   function loadDetails(item) {
     let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (details) {
-      // Now we add the details to the item
-      item.imageUrlFront = details.sprites.other.dream_world.front_default;
-      item.imageUrlAnimated = details.sprites.versions['generation-v']['black-white'].animated.front_default;
-      item.height = details.height;
-      item.weight = details.weight;
-      item.types = [];
-      details.types.forEach(function(itemType){
-        item.types.push(itemType.type.name);
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
       })
-      item.abilities = [];
-      details.abilities.forEach(function(itemAbilities){
-        item.abilities.push(itemAbilities.ability.name);
+      .then(function (details) {
+        // Now we add the details to the item
+        item.imageUrlFront = details.sprites.other.dream_world.front_default;
+        item.imageUrlAnimated =
+          details.sprites.versions["generation-v"][
+            "black-white"
+          ].animated.front_default;
+        item.height = details.height;
+        item.weight = details.weight;
+        item.types = [];
+        details.types.forEach(function (itemType) {
+          item.types.push(itemType.type.name);
+        });
+        item.abilities = [];
+        details.abilities.forEach(function (itemAbilities) {
+          item.abilities.push(itemAbilities.ability.name);
+        });
       })
-    }).catch(function (e) {
-      console.error(e);
-    });
+      .catch(function (e) {
+        console.error(e);
+      });
   }
 
-  let modalContainer = $('#modal-container');
-  // showModal function defined here... 
-  function showModal(item){
+  let modalContainer = $("#modal-container");
+  // showModal function defined here...
+  function showModal(item) {
     let modalBody = $(".modal-body");
     let modalTitle = $(".modal-title");
     let modalHeader = $(".modal-header");
@@ -100,7 +111,7 @@ let pokemonRepository = (function () {
 
     // Create element for pokemon name in modal content
     let nameElement = $("<h1>" + item.name + "</h1>");
-    
+
     // Create img for pokemon in modal content
     let imageElementFront = $('<img class="modal-img" style="width:50%">');
     imageElementFront.attr("src", item.imageUrlFront);
@@ -170,7 +181,7 @@ let pokemonRepository = (function () {
   };
 })();
 
-pokemonRepository.loadList().then(function() {
+pokemonRepository.loadList().then(function () {
   // set up forEach loop on pokemonList
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
@@ -197,4 +208,4 @@ function search() {
       li[i].style.display = "none";
     }
   }
-} 
+}
